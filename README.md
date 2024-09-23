@@ -37,5 +37,10 @@ modified := re.ReplaceAllString(html, `${1}/login${3}`)
 ```
 * Redirection is based on file name, save templates to **templates** with the correlating website which the form is for (ie. linkedin.html)
 
+# Todo 🧾
+* Location Detection HTML5 Geolocation [ ]
+* Email Creation and Obfuscation [ ]
+* SMS capabilities [ ]
+
 # Disclaimer
 This program should only be used on environments that you own or have explicit permission to do so. The author will not be held liable for any illegal use of this program.
