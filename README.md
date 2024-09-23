@@ -43,5 +43,9 @@ modified := re.ReplaceAllString(html, `${1}/login${3}`)
 * SMS capabilities [ ]
 * Multi-Stage Phishing Support [ ]
 
+
+# But why FlyFishing? 🤔
+After a previous phishing assessment, I wanted to highlight the ease of spinning up cloned phishing pages within around 20 minutes from start to finish. This would allow anyone with limited time to get crackin' wit creds! 🔥
+
 # Disclaimer
 This program should only be used on environments that you own or have explicit permission to do so. The author will not be held liable for any illegal use of this program.
