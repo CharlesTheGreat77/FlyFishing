@@ -41,6 +41,7 @@ modified := re.ReplaceAllString(html, `${1}/login${3}`)
 * Location Detection HTML5 Geolocation [ ]
 * Email Creation and Obfuscation [ ]
 * SMS capabilities [ ]
+* Multi-Stage Phishing Support [ ]
 
 # Disclaimer
 This program should only be used on environments that you own or have explicit permission to do so. The author will not be held liable for any illegal use of this program.
