@@ -51,5 +51,5 @@ After a previous phishing assessment, I wanted to highlight the ease of spinning
 # Credits 🪙
 Templates: https://github.com/htr-tech/zphisher/tree/master/.sites
 
-# Disclaimer
+# Disclaimer 🚩
 This program should only be used on environments that you own or have explicit permission to do so. The author will not be held liable for any illegal use of this program.
