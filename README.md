@@ -49,6 +49,12 @@ go build -o caster caster.go
 ./caster -h
 ```
 
+## SMTP Setup ✉️
+1. Edit *config.json*
+2. Enter your email (smtp domain)
+3. Enter your token (password)
+4. Enter the SMTP server
+
 ## Usage 🍤
 ```bash
 Usage of ./caster:
