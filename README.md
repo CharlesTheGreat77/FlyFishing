@@ -61,18 +61,28 @@ Usage of ./caster:
 ```
 
 # Caster examples
+
+Single Target
 ```bash
 caster -template template.html -subject "RSVP Lunch" -spoof "Steven <michale@filamentco.org>" -target example@domain.com
 ```
 
+Multiple Target(s)
 ```bash
 caster -template template.html -subject "RSVP Lunch" -spoof "Steven <michale@filamentco.org>" -target example@domain.com,example2@domain.com
 ```
 
+Target(s) in file
 ```bash
 caster -template template.html -subject "RSVP Lunch" -spoof "Steven <michale@filamentco.org>" -target emails.txt
 ```
 * emails in file must be seperated by line.
+
+
+Modify template to replace chars with homographic (cryillic) lookalikes
+```bash
+caster -template template.html -homograph
+```
 
 Testing phishing emails with spamfilter
 ```bash
