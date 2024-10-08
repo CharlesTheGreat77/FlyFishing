@@ -3,7 +3,7 @@ Quickly Deploy Phishing Webpages for Red Team Assessments
 
 
 # Description 🦠
-Quickly deploy phishing webpages to lure victims in Red Team Assessments. This is a lighweight golang webserver which hosts the webpage locally or for one to host externally. 
+Quickly deploy phishing webpages and cast phishing emails to lure victims in Red Team Assessments. This is a lighweight golang webserver which hosts the webpage locally or for one to host externally. Caster on the other hand is for casting phishing emails to given targets on an assessment.
 
 # Deployment 🔨
 ```bash
@@ -14,8 +14,8 @@ go mod tidy
 go build -o fishing main.go
 ```
 
-# Usage 🎯
-Templates can be found in **/templates** *or* found online.
+# fishing 🎣
+FlyFishing allows one to setup a local phishing webpage based on a given template. Templates can be found in **/templates** *or* found online.
 ```bash
 ./fishing -template templates/google.html
 2024/09/23 06:16:27 [*] Server started at http://localhost:8888
@@ -35,14 +35,63 @@ By using regex to locate action attribute(s) in the form and points such to our 
 re := regexp.MustCompile(`(?i)(<form[^>]*action=")([^"]*)(")`)
 modified := re.ReplaceAllString(html, `${1}/login${3}`)
 ```
-* Redirection is based on file name, save templates to **templates** with the correlating website which the form is for (ie. linkedin.html)
+* Redirection is based on file name, save templates to **templates** with the correlating website which the form is for (ie. linkedin.html).
+  Templates are encoded in base64 and displayed after 3 seconds of the page being visited.
+
+
+# Caster 🎣
+Caster allows one to send or modify given templates to send to targets. It allows one to test the score(s) of a given phishing email using *mail-tester.com* for the odds of the email landing in spam. By spoofing a given email by effectively manipulating the *headers* with a well made phishing email will hook 🪝 most if not all targets!
+
+```bash
+Usage of ./caster:
+  -help
+    	show usage
+  -homograph
+    	specify option to replace chars with cryillic
+  -spamfilter
+    	enable to get a given templates spam score
+  -spoof string
+    	specify address to spoof email from [keep spam in mind]
+  -subject string
+    	specify a subject to add to email
+  -target string
+    	specify target(s) email address [filename or seperated by commas]
+  -template string
+    	specify a template for the email
+```
+
+# Caster examples
+```bash
+caster -template template.html -subject "RSVP Lunch" -spoof "Steven <michale@filamentco.org>" -target example@domain.com
+```
+
+```bash
+caster -template template.html -subject "RSVP Lunch" -spoof "Steven <michale@filamentco.org>" -target example@domain.com,example2@domain.com
+```
+
+```bash
+caster -template template.html -subject "RSVP Lunch" -spoof "Steven <michale@filamentco.org>" -target emails.txt
+```
+* emails in file must be seperated by line.
+
+Testing phishing emails with spamfilter
+```bash
+caster -template template.html -subject "RSVP Lunch" -spoof "Steven <michale@filamentco.org>" -spamfilter
+```
+* sends phishing email to mail-tester.com to retreive **spam** score. [default mail-tester email is hardcoded]
+
+## Spamfilter
+The spamfilter email to test phishing email spam scores can be changed to an "updated" email of your choice.
+1. Visit https://mail-tester.com
+2. Copy Link Email
+3. Paste email on line **217**
+```golang
+	tempMail := "test-sxzd09jk9@srv1.mail-tester.com"
+```
 
 # Todo 🧾
-* Location Detection HTML5 Geolocation [ ]
-* Email Creation and Obfuscation [ ]
-* SMS capabilities [ ]
-* Multi-Stage Phishing Support [ ]
-
+* AI template creation [ ]
+* Email Obfuscation [x]
 
 # But why FlyFishing? 🤔
 After a previous phishing assessment, I wanted to highlight the ease of spinning up cloned phishing pages within around 20 minutes from start to finish. This would allow anyone with limited time to get crackin' wit creds! 🔥
