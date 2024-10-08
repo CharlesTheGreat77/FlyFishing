@@ -11,6 +11,7 @@ git clone https://github.com/CharlesTheGreat77/FlyFishing
 cd FlyFishing
 go mod init main
 go mod tidy
+go get github.com/PuerkitoBio/goquery
 go build -o fishing main.go
 ```
 
@@ -28,7 +29,7 @@ FlyFishing allows one to setup a local phishing webpage based on a given templat
 2024/09/23 06:16:58 Field: login_email, Value: admin@gmail.com
 ```
 
-# Templates 📝
+## Templates 📝
 How are templates processed?
 By using regex to locate action attribute(s) in the form and points such to our /login handler
 ```golang
@@ -42,6 +43,13 @@ modified := re.ReplaceAllString(html, `${1}/login${3}`)
 # Caster 🎣
 Caster allows one to send or modify given templates to send to targets. It allows one to test the score(s) of a given phishing email using *mail-tester.com* for the odds of the email landing in spam. By spoofing a given email by effectively manipulating the *headers* with a well made phishing email will hook 🪝 most if not all targets!
 
+## Build caster ⚙️
+```
+go build -o caster caster.go
+./caster -h
+```
+
+## Usage 🍤
 ```bash
 Usage of ./caster:
   -help
@@ -60,7 +68,7 @@ Usage of ./caster:
     	specify a template for the email
 ```
 
-# Caster examples
+## Caster examples ☕️
 
 Single Target
 ```bash
